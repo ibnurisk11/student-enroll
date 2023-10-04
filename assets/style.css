@@ -1,0 +1,204 @@
+/* Untuk keseluruhan */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0px 200px 0px 200px;
+}
+
+.btn-edit {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20%;
+}
+
+.btn-delete {
+  background-color: #b90808;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20%;
+}
+
+/* Untuk Notifikasi */
+
+.alert {
+    position: relative;
+    top: 10;
+    left: 0;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    margin: 10px;
+    line-height: 1.8;
+    border-radius: 5px;
+    cursor: hand;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-weight: 400;
+  }
+  
+  .alertCheckbox {
+    display: none;
+  }
+  
+  :checked + .alert {
+    display: none;
+  }
+  
+  .alertText {
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+  }
+  
+  .alertClose {
+    float: right;
+    padding-top: 5px;
+    font-size: 10px;
+  }
+  
+  .clear {
+    clear: both;
+  }
+  
+  .info {
+    background-color: #EEE;
+    border: 1px solid #DDD;
+    color: #999;
+  }
+  
+  .success {
+    background-color: #EFE;
+    border: 1px solid #DED;
+    color: #9A9;
+  }
+  
+  .notice {
+    background-color: #EFF;
+    border: 1px solid #DEE;
+    color: #9AA;
+  }
+  
+  .warning {
+    background-color: #FDF7DF;
+    border: 1px solid #FEEC6F;
+    color: #C9971C;
+  }
+  
+  .error {
+    background-color: #FEE;
+    border: 1px solid #EDD;
+    color: #A66;
+  }
+
+  /* Untuk Modal */
+
+  .button{
+    background: #1ce;
+    padding: 2em 2em;
+    color: #fff;
+    border:  0;
+  }
+  
+  .button:hover{
+    background: #2a5e27;
+    cursor: pointer;
+  }
+  
+  .modal-overlay{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+  
+  .modal-content{
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    margin: 20% auto;
+    width: 70%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+  }
+  
+  .modal-header h2, .modal-footer h3{
+    margin: 0;
+  }
+  
+  .modal-header{
+    background: rgb(24, 43, 46);
+    padding: 15px;
+    color: #fff;
+  }
+  
+  .modal-body{
+    padding: 10px 20px;
+    margin: 10px 20px;
+    border-radius: 14px;
+  }
+  
+  .modal-footer{
+    background: rgb(24, 43, 46);
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .closeBtn{
+    /* font-size: 30px; */
+    /* color: #fff; */
+    /* float: right; */
+    background-color: rgb(240, 9, 9);
+    border: none;
+    color: rgb(252, 251, 251);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .closeBtn:hover{
+    background-color: brown;
+    color: white;
+
+  }
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+  
+  /* .closeBtn:hover,.closeBtn:focus{
+    color: #e439ef;
+    text-decoration: none;
+    cursor:  pointer;
+  } */
