@@ -1,2 +1,1 @@
-# crud-register
-Membuat form pendaftaran siswa SMK beserta dengan fitur update dan delete.
+Proyek ini bernama Yatra, merupakan aplikasi pendaftaran siswa baru berbasis website. Di sini saya menggunakan HTML dan CSS yang dibungkus dengan bahasa PHP. Selain itu, terdapat menu filter juga pada halaman list-siswa agar memudahkan dalam proses pencarian.
