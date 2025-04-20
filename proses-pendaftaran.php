@@ -1,46 +1,25 @@
 <?php
-
 include("config.php");
 
-// cek apakah tombol daftar sudah di klik atau belum?
-if(isset($_POST['daftar'])){
-
-
-    // ambil data dari formulir
-
+if (isset($_POST['daftar'])) {
     $nama = $_POST['nama'];
+    $nisin = $_POST['nisin'];
+    $id_sekolah = $_POST['id_sekolah'];
     $alamat = $_POST['alamat'];
-    $jk = $_POST['jenis_kelamin'];
+    $jenis_kelamin = $_POST['jenis_kelamin'];
     $agama = $_POST['agama'];
-    $sekolah = $_POST['sekolah_asal'];
-   
+    $nilai_un = $_POST['nilai_un'];
 
+    // Query untuk menyimpan data
+    $query = "INSERT INTO peserta (nama_peserta, nisin, id_sekolah, alamat, jenis_kelamin, agama, nilai_un)
+              VALUES ('$nama', '$nisin', '$id_sekolah', '$alamat', '$jenis_kelamin', '$agama', '$nilai_un')";
 
-    // buat query
+    $result = mysqli_query($conn, $query);
 
-    $sql = "INSERT INTO calon_siswa (nama, alamat, jenis_kelamin, agama, sekolah_asal) VALUE ('$nama', '$alamat', '$jk', '$agama', '$sekolah')";
-    $query = mysqli_query($db, $sql);
-   
-
-    // cek apakah query simpan berhasil?
-
-    if( $query ) {
-        // print_r('qwe');
-        // die;
-        // kalau berhasil alihkan ke halaman index.php dengan status = sukses
-        // header('Location : list-siswa.php');
-        session_start();
-        $_SESSION['flash'] = 'Sukses menambahkan data';
-        header('Location: list-siswa.php');
-
-        
+    if ($result) {
+        echo "<script>alert('Pendaftaran berhasil!'); window.location='index.php';</script>";
     } else {
-        // kalau gagal alihkan ke halaman index.php dengan status = gagal
-        $_SESSION['flash'] = 'Gagal menambahkan data';
-        header('Location: index.php?status=gagal');
+        echo "<script>alert('Pendaftaran gagal!'); window.history.back();</script>";
     }
-
-} else {
-    die("Akses dilarang...");
 }
 ?>

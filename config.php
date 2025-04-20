@@ -2,7 +2,7 @@
    $server = "localhost";
    $user = "root";
    $password = "";
-   $nama_database = "pendaftaran_siswa";
+   $nama_database = "db_school_admission";
 
    $db = mysqli_connect($server, $user, $password, $nama_database);
 
