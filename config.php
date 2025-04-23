@@ -1,13 +1,12 @@
 <?php
-   $server = "localhost";
+   $host = "localhost";
    $user = "root";
-   $password = "";
-   $nama_database = "db_school_admission";
+   $pass = "";
+   $db = "db_school_admission";
 
-   $db = mysqli_connect($server, $user, $password, $nama_database);
+   $conn = mysqli_connect($host, $user, $pass, $db);
 
-   if( !$db){
-    die("Gagal terhubung dengan database: ". mysqli_connect_error());
-   
-   }
+   if (!$conn) {
+       die("Koneksi gagal: " . mysqli_connect_error());
+      }
 ?>
