@@ -3,68 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran Siswa Baru | SMK Coding Terpadu</title>
-    <link rel="stylesheet" href="assets/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome 5.15.4 -->
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-    >
+    <title>Login or Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
 </head>
 <body>
-
-<!-- Navigation Bar -->
-<!-- <nav class="navbar navbar-expand-lg bg-primary navbar-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">Beranda</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item ms-2">
-                    <a class="nav-link text-light" href="form-daftar.php">Halaman Pendaftaran</a>
-                </li>
-                <li class="nav-item ms-2">
-                    <a class="nav-link text-light" href="list-siswa.php">List Siswa</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav> -->
-
-<!-- Card Section -->
-<div class="container mx-auto">
-    <div class="row justify-content-center">
-        <div class="card m-10" style="width: 18rem;">
-            <img src="assets/yatra-logo.png" class="card-img-top p-4" alt="sekolah-coding">
-            <div class="card-body">
-                <h5 class="card-title text-center">Selamat Datang</h5>
-                <p class="card-text text-justify"> Bergabunglah dengan ribuan pendaki lain yang sudah merasakan serunya berpetualang</p>
-                <a href="form-daftar.php" class="btn btn-primary">Daftar Baru</a>
-                <a href="list-siswa.php" class="btn btn-warning">List Teman</a>
+    <div class="container mt-5">
+        <h2 class="text-center">Selamat Datang</h2>
+        <p class="text-center">Please login or register to continue</p>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="index.php" method="POST">
+                            <div class="mb-3">
+                                <label for="emailOrUsername" class="form-label">Email or Username</label>
+                                <input type="text" class="form-control" id="emailOrUsername" name="emailOrUsername" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" name="action" value="login" class="btn btn-primary">Login</button>
+                                <!-- <button type="submit" name="action" value="register" class="btn btn-secondary">Register</button> -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<!-- Status Message -->
-<?php if(isset($_GET['status'])): ?>
-    <p>
-        <?php 
-            if($_GET['status'] == 'sukses'){
-                echo "Pendaftaran siswa baru berhasil";
-            } else {
-                echo "Pendaftaran gagal!";
-            }
-        ?>
-    </p>
-<?php endif; ?>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'login') {
+    $emailOrUsername = $_POST['emailOrUsername'];
+    $password = md5($_POST['password']); // Encrypt the password using MD5
+
+    // Database connection
+    $conn = new mysqli('localhost', 'root', '', 'db_school_admission');
+
+    // Check connection
+    if ($conn->connect_error) {
+        die('Connection failed: ' . $conn->connect_error);
+    }
+
+    // Query to check user credentials
+    $stmt = $conn->prepare("SELECT * FROM tb_register WHERE register_email = ? AND register_password = ?");
+    $stmt->bind_param("ss", $emailOrUsername, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        echo "<script>alert('Login successful!');</script>";
+        header("Location: create.php"); // Redirect to create.php
+        exit();
+        // Redirect or perform further actions
+    } else {
+        echo "<script>alert('Invalid email or password.');</script>";
+    }
+
+    $stmt->close();
+    $conn->close();
+}
+?>
+
+<!-- if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'login') {
+    $emailOrUsername = $_POST['emailOrUsername'];
+    $password = md5($_POST['password']); // Encrypt the password using MD5
+
+    // Database connection
+    $conn = new mysqli('localhost', 'root', '', 'student_enroll');
+
+    // Check connection
+    if ($conn->connect_error) {
+        die('Connection failed: ' . $conn->connect_error);
+    }
+
+    // Query to check user credentials
+    $stmt = $conn->prepare("SELECT * FROM tb_register WHERE register_email = ? AND register_password = ?");
+    $stmt->bind_param("ss", $emailOrUsername, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        echo "<script>alert('Login successful!');</script>";
+        header("Location: create.php"); // Redirect to create.php
+        exit();
+    } else {
+        echo "<script>alert('Invalid email or password.');</script>";
+    }
+
+    $stmt->close();
+    $conn->close();
+} -->
