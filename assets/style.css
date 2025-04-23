@@ -1,6 +1,0 @@
-body {
-  background-image: url('/assets/background.jpg'); /* Ganti 'gambar.jpg' dengan URL atau path gambar yang Anda inginkan */
-  background-size: cover; /* Mengatur ukuran gambar agar menutupi seluruh area background */
-  background-position: center; /* Mengatur posisi gambar agar berada di tengah */
-  background-repeat: no-repeat; /* Menghindari pengulangan gambar */
-}
