@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
     if ($result->num_rows > 0) {
         echo "<script>alert('Login successful!');</script>";
-        header("Location: create.php"); // Redirect to create.php
+        header("Location: read.php"); // Redirect to create.php
         exit();
         // Redirect or perform further actions
     } else {

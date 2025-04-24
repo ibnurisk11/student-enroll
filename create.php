@@ -39,6 +39,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="container mt-5">
     <h2 class="text-center mb-4">Formulir Pendaftaran Peserta</h2>
+
+    <div class="mb-3 text-left">
+        <a href="read.php" class="btn btn-warning">Kembali ke Halaman List</a>
+    </div>
+
+    <!-- halaman pendaftaran peserta -->
     <form method="POST" class="p-4 border rounded shadow-sm bg-light">
         <div class="mb-3">
             <label for="nama_peserta" class="form-label">Nama Peserta</label>

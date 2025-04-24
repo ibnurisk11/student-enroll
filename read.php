@@ -16,6 +16,9 @@ $result = mysqli_query($conn, $query);
 <body>
     <div class="container mt-5">
         <h1 class="text-center mb-4">Data Peserta</h1>
+        <div class="mb-3 text-end">
+            <a href="create.php" class="btn btn-primary">Tambah Data</a>
+        </div>
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
                 <tr>
